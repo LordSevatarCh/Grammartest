@@ -3,100 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phrasal Verbs Exercise</title>
+    <title>Phrasal Verbs Exercise - British Council Style</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            line-height: 1.6;
-            color: #333;
-        }
+        :root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #2d3436;
+    --bg-color: #f8f9fa;
+    --border-radius: 8px;
+    --shadow: 0 3px 6px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
 
-        .exercise-box {
-            border: 2px solid #e6e6e6;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 20px 0;
-            background-color: #f9f9f9;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        h1 {
-            color: #2d5f7b;
-            font-size: 24px;
-            margin-bottom: 25px;
-        }
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
 
-        .phrasal-list {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
+/* Ejercicio Principal */
+.exercise-box {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
 
-        .gap-input {
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 5px 8px;
-            margin: 0 5px;
-            width: 120px;
-        }
+.exercise-box:hover {
+    transform: translateY(-3px);
+}
 
-        .interactive-buttons {
-            margin-top: 25px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+h1 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 0.75rem;
+}
 
-        button {
-            background-color: #2d5f7b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.phrasal-list {
+    background: #e3f2fd;
+    padding: 1.25rem;
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+    font-weight: 500;
+}
 
-        button:hover {
-            background-color: #1d465d;
-        }
+.gap-input {
+    border: 2px solid #dfe6e9;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin: 0 0.5rem;
+    width: 140px;
+    font-family: inherit;
+    transition: var(--transition);
+}
 
-        .hidden {
-            display: none;
-        }
+.gap-input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
 
-        .feedback-section {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e8f4fc;
-            border-radius: 5px;
-        }
+/* Secciones de Ejercicios */
+.exercise-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+}
 
-        .correct {
-            border-color: #4CAF50 !important;
-            background-color: #e8f5e9;
-        }
+h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--secondary-color);
+}
 
-        .incorrect {
-            border-color: #f44336 !important;
-            background-color: #ffebee;
-        }
+.media-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 1.5rem auto;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
 
-        .score-display {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #e3f2fd;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+audio, video {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+video {
+    aspect-ratio: 16/9;
+    background: #000;
+}
+
+/* Sistema de Preguntas */
+.question-item {
+    background: white;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.options-list {
+    list-style: none;
+    margin-top: 1.25rem;
+}
+
+.options-list li, .choice-btn {
+    padding: 1rem;
+    margin: 0.75rem 0;
+    background: #f8f9fa;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.options-list li:hover, .choice-btn:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+/* Botones y Feedback */
+.interactive-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.feedback-section {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: #e8f4fc;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* Estados */
+.correct {
+    background: #e8f5e9 !important;
+    border-color: #27ae60 !important;
+}
+
+.incorrect {
+    background: #ffebee !important;
+    border-color: #e74c3c !important;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        font-size: 15px;
+    }
+
+    .exercise-box, .exercise-section {
+        padding: 1.5rem;
+    }
+
+    .gap-input {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .interactive-buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Video Exercise Specific Styles */
+.video-exercise .question-item {
+    background: #fffcf5;
+    border-left: 4px solid #ffb74d;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+}
+
+.video-exercise .multiple-choice {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.video-exercise .choice-btn {
+    padding: 1.2rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    text-align: left;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.video-exercise .choice-btn::before {
+    content: "➤";
+    color: var(--secondary-color);
+    font-size: 0.8em;
+}
+
+.video-exercise .choice-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.video-exercise .correct {
+    background: #e8f5e9 !important;
+    border-color: #4CAF50 !important;
+    color: #2e7d32 !important;
+}
+
+.video-exercise .correct::before {
+    content: "✓";
+    color: #4CAF50 !important;
+}
+
+.video-exercise .incorrect {
+    background: #ffebee !important;
+    border-color: #f44336 !important;
+    color: #c62828 !important;
+}
+
+.video-exercise .incorrect::before {
+    content: "✕";
+    color: #f44336 !important;
+}
+
+.video-exercise .feedback {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid var(--secondary-color);
+    display: none;
+}
+
+.video-exercise .feedback.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .video-exercise .multiple-choice {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-exercise .choice-btn {
+        padding: 1rem;
+    }
+}
+
     </style>
 </head>
 <body>
     <div class="exercise-box">
-        <h1>📱 Technology Troubles: Phrasal Verbs Exercise By ChomboGames</h1>
+        <h1>📱 Technology Troubles: Phrasal Verbs Exercise</h1>
         
         <div class="phrasal-list">
             <strong>Phrasal verbs:</strong><br>
@@ -126,6 +355,79 @@
             - Part 2 tests problem-solving in real-life scenarios.</p>
         </div>
     </div>
+
+    <main>
+        <!-- Sección de Listening Exercise -->
+        <section class="exercise-section" aria-labelledby="listening-section">
+            <h2 id="listening-section">🎧 Listening Exercise</h2>
+            <div class="exercise-container listening-exercise">
+                <div class="media-wrapper">
+                    <audio controls preload="metadata">
+                        <source src="/youtube_ry9SYnV3svc_audio.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+
+                <div class="questions-container">
+                    <div class="question-item">
+                        <h3>1. What does things Mark talking about his company?</h3>
+                        <ul class="options-list">
+                            <li data-correct="true">He is talking about that is an awesome job, is flexible, his boss is hilarious, and he prefers to waking up early to get more money than be a night owl.</li>
+                            <li data-correct="false">He is talking about the horrible things about his job, is not flexible and only focus on the success of the company.</li>
+                            <li data-correct="false">He is talking about that his job is superb, but it is to stress beacuse of the company' tasks.</li>
+                        </ul>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="question-item">
+                        <h3>2. What does the boss allow Mark to do in the company activities? </h3>
+                        <ul class="options-list">
+                            <li data-correct="false">To increase his efforts to make more money.</li>
+                            <li data-correct="true">To do everything he wants to do.</li>
+                            <li data-correct="false">To getting more planning programs to an effective execution of the company' activities.</li>
+                        </ul>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Video Exercise -->
+        <section class="exercise-section" aria-labelledby="video-section">
+            <h2 id="video-section">🎬 Video comprehension exercise</h2>
+            <div class="exercise-container video-exercise">
+                <div class="media-wrapper">
+                    <video controls preload="metadata" poster="/Capture.PNG">
+                        <source src="/youtube_nCKwUB8EVbc_1920x1080_h264.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                        <track kind="subtitles" src="captions/news-es.vtt" srclang="es" label="Español" default>
+                    </video>
+                </div>
+
+                <div class="questions-container">
+                    <div class="question-item">
+                        <h3>1. What is the main message of the current video?</h3>
+                        <div class="multiple-choice">
+                            <button class="choice-btn" data-correct="false">A dragon attacks a street without warning.</button>
+                            <button class="choice-btn" data-correct="true">If you fall in a rage, you might have a twice of problem.</button>
+                            <button class="choice-btn" data-correct="false">A girl is upset about her reward for the promotional food.</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="question-item">
+                        <h3>2. What does the main purpose of the short-film?</h3>
+                        <div class="multiple-choice">
+                            <button class="choice-btn" data-correct="false">To spend all your money on things could affect your economic stability.</button>
+                            <button class="choice-btn" data-correct="true">To show what happens when you can't control your problems.</button>
+                            <button class="choice-btn" data-correct="false">To comprehend the situation about what happens if you spend all your money on an article.</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script>
         const correctAnswers = {
@@ -188,6 +490,35 @@
         function showFeedback() {
             document.getElementById('feedbackContent').classList.remove('hidden');
         }
+
+        // Funcionalidad para Listening Exercise
+        document.querySelectorAll('.listening-exercise .options-list li').forEach(item => {
+            item.addEventListener('click', function() {
+                const isCorrect = this.dataset.correct === 'true';
+                const feedback = this.closest('.question-item').querySelector('.feedback');
+                
+                this.classList.add(isCorrect ? 'correct' : 'incorrect');
+                feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Incorrect. Try again.';
+                feedback.classList.add('show');
+            });
+        });
+
+        // Funcionalidad para Video Exercise
+        document.querySelectorAll('.video-exercise .choice-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const isCorrect = this.dataset.correct === 'true';
+                const feedback = this.closest('.question-item').querySelector('.feedback');
+                
+                this.classList.add(isCorrect ? 'correct' : 'incorrect');
+                feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Incorrect. Try once more.';
+                feedback.classList.add('show');
+                
+                if(!isCorrect) {
+                    const correctBtn = this.parentElement.querySelector('[data-correct="true"]');
+                    correctBtn.classList.add('correct');
+                }
+            });
+        });
     </script>
 </body>
 </html>
