@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phrasal Verbs Exercise - British Council Style</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .exercise-box {
+            border: 2px solid #e6e6e6;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #2d5f7b;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .phrasal-list {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .gap-input {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px 8px;
+            margin: 0 5px;
+            width: 120px;
+        }
+
+        .interactive-buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background-color: #2d5f7b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1d465d;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .feedback-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fc;
+            border-radius: 5px;
+        }
+
+        .correct {
+            border-color: #4CAF50 !important;
+            background-color: #e8f5e9;
+        }
+
+        .incorrect {
+            border-color: #f44336 !important;
+            background-color: #ffebee;
+        }
+
+        .score-display {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="exercise-box">
+        <h1>📱 Technology Troubles: Phrasal Verbs Exercise</h1>
+        
+        <div class="phrasal-list">
+            <strong>Phrasal verbs:</strong><br>
+            charge up • switch on • cut off
+        </div>
+
+        <div class="exercise-part">
+            <h2>Part 1: Complete the Story</h2>
+            <p>Emma wants to join an online gaming tournament, but she's having technical issues. First, her laptop battery is low, so she needs to 
+            <input type="text" class="gap-input" id="gap1"> before it dies. She tries to log in, but the Wi-Fi 
+            <input type="text" class="gap-input" id="gap2"> suddenly, and she loses connection. Frustrated, she asks her brother to 
+            <input type="text" class="gap-input" id="gap3"> the router again.</p>
+        </div>
+
+        <div class="interactive-buttons">
+            <button onclick="checkAnswers()">Check Answers</button>
+            <button onclick="showFeedback()">Show Feedback</button>
+            <button onclick="tryAgain()">Try Again</button>
+            <button id="showAnswersBtn" class="hidden" onclick="showCorrectAnswers()">Show Correct Answers</button>
+        </div>
+
+        <div id="scoreContainer" class="hidden"></div>
+
+        <div id="feedbackContent" class="hidden feedback-section">
+            <p><strong>Feedback:</strong><br>
+            - Part 1 focuses on phrasal verbs related to technology and communication.<br>
+            - Part 2 tests problem-solving in real-life scenarios.</p>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            gap1: "charge up",
+            gap2: "cuts off",
+            gap3: "switch on"
+        };
+
+        function checkAnswers() {
+            let score = 0;
+            const total = Object.keys(correctAnswers).length;
+            
+            document.querySelectorAll('.gap-input').forEach(input => {
+                input.classList.remove('correct', 'incorrect');
+            });
+
+            for (const [gapId, answer] of Object.entries(correctAnswers)) {
+                const input = document.getElementById(gapId);
+                const userAnswer = input.value.trim().toLowerCase();
+                
+                if(userAnswer === answer.toLowerCase()) {
+                    input.classList.add('correct');
+                    score++;
+                } else {
+                    input.classList.add('incorrect');
+                }
+            }
+
+            const scoreContainer = document.getElementById('scoreContainer');
+            scoreContainer.classList.remove('hidden');
+            scoreContainer.innerHTML = `
+                <div class="score-display">
+                    🎯 You scored: ${score}/${total} correct!
+                    ${score === total ? '🎉 Perfect!' : '💪 Keep trying!'}
+                </div>
+            `;
+
+            document.getElementById('showAnswersBtn').classList.remove('hidden');
+        }
+
+        function showCorrectAnswers() {
+            for (const [gapId, answer] of Object.entries(correctAnswers)) {
+                const input = document.getElementById(gapId);
+                input.value = answer;
+                input.classList.add('correct');
+            }
+        }
+
+        function tryAgain() {
+            const inputs = document.querySelectorAll('.gap-input');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+            });
+            
+            document.getElementById('scoreContainer').classList.add('hidden');
+            document.getElementById('showAnswersBtn').classList.add('hidden');
+        }
+
+        function showFeedback() {
+            document.getElementById('feedbackContent').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
